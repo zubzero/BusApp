@@ -1,0 +1,193 @@
+.toolbar{
+	background: #d40303;
+}
+.portada .card{
+	border-radius: 10px;
+    background-color: #d40303;
+    border-bottom: 2px solid yellow;
+    text-align: center;
+    padding: 10px;
+}
+.portada .title{
+	font-size: 15px;
+	color: white;
+	text-transform: uppercase;
+}
+.portada ons-row{
+	position: absolute;
+	top: 20%;
+}
+.back-button,.toolbar-button{
+	color: #fff;
+}
+.back-button__icon{
+	fill: #ffc801;
+}
+.footer_v{
+	width: 120px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    right: 50%;
+    margin-left: -50px;
+}
+.profile-pic > img{
+	height: auto;
+	max-width: 100%;
+}
+.nombre{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/*card detalle*/
+
+.CardDetalle .page--performer-details__content {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px !important;
+  bottom: 0px;
+}
+
+.CardDetalle .card {
+  background-color: white;
+  background-image: url('../img/bus.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 250px;
+}
+
+.CardDetalle .card-toolbar ons-back-button span {
+  color: white;
+}
+
+.CardDetalle .card-name {
+  font-weight: 600;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: -1px -1px 1px rgba(255,255,255), 1px 1px 1px rgba(255,255,255);
+  color: #05ad02;
+}
+
+.CardDetalle .card-desc {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.9;
+  text-align: center;
+  line-height: 1.4;
+  color: #f9ad02;
+}
+
+.CardDetalle .rating {
+  text-align: center;
+  position: relative;
+  height: 0px;
+}
+
+.CardDetalle .rating-num {
+  position: relative;
+  top: -24px;
+  height: 24px;
+  color: white;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 4px 4px 0 0;
+  padding: 0 6px;
+  background-color: #ffa500;
+  color: white;
+  width: auto;
+  margin: 0 auto 0 auto;
+  display: inline-block;
+}
+
+.CardDetalle .rating-num ons-icon {
+  font-size: 11px;
+  vertical-align: -0px;
+}
+
+.CardDetalle .action-col {
+  text-align: center;
+  opacity: 0.4;
+  padding: 10px 0 8px;
+}
+
+.CardDetalle .action-col:active {
+  opacity: 0.7;
+}
+
+.CardDetalle .action-col ons-button {
+  padding: 0;
+  line-height: 1;
+}
+
+.CardDetalle .action-icon {
+  padding: 0 0 4px 0;
+}
+
+.CardDetalle .action-icon ons-icon {
+  font-size: 28px;
+}
+
+.CardDetalle .action-label {
+  font-size: 12px;
+}
+
+.CardDetalle .prop-desc {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.CardDetalle .prop-desc ons-icon {
+  font-size: 14px;
+  vertical-align: -0px;
+  opacity: 0.5;
+}
+.CardDetalle .list--material{
+	background-color: #000
+}
+#map {
+        height: 100%;
+      }
+
+
+.profile-pic {
+  width: 100px;
+  height: auto;
+  background-color: #fff;
+  margin: 20px auto 10px;
+  border: 3px solid #fff;
+  border-radius: 10%;
+}
+
+.profile-pic > img {
+  display: block;
+}
+
+ons-list-item {
+  color: #444;
+}
+.pie_mapa{
+  height: 15%;
+  width: 100%;
+  background: red;
+}
+.blanco .page__content{
+  color: #000;
+  background-color: #fff !important;
+  padding-top: 40px;
+}
+.blanco .page__content input, .blanco .text-input--material__label{
+  color: #0a5825;
+  width: 90%;
+}
+.blanco .select-input--material{
+  background: #ccc;
+  padding: 10px;
+}
