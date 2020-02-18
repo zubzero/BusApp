@@ -9,6 +9,14 @@
   "installed_plugins": {
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.BussApp.mx"
+    },
+    "cordova-plugin-googlemaps": {
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.BussApp.mx"
+    },
+    "cordova-plugin-browsersync": {
+      "PACKAGE_NAME": "com.BussApp.mx"
     }
   },
   "dependent_plugins": {}
