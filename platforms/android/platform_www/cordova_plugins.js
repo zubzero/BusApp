@@ -242,11 +242,39 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-googlemaps/www/js_CordovaGoogleMaps-for-android_ios.js",
       "pluginId": "cordova-plugin-googlemaps",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-network-information.network",
+      "file": "plugins/cordova-plugin-network-information/www/network.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "navigator.connection",
+        "navigator.network.connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-network-information.Connection",
+      "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "Connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-admobpro.AdMob",
+      "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+      "pluginId": "cordova-plugin-admobpro",
+      "clobbers": [
+        "window.AdMob"
+      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-googlemaps": "2.6.2",
-    "cordova-plugin-browsersync": "0.1.7"
+    "cordova-plugin-browsersync": "0.1.7",
+    "cordova-plugin-network-information": "1.3.3",
+    "cordova-plugin-extension": "1.5.4",
+    "cordova-plugin-admobpro": "2.49.0"
   };
 });

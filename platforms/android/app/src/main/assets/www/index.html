@@ -9,11 +9,11 @@
           <link rel="stylesheet" type="text/css" href="css/styles.css">
           <script src="js/angular17.min.js"></script>
           <script src="js/onsenui.js"></script>
-
-          <script
+          <!-- <script
           src="https://code.jquery.com/jquery-3.4.1.min.js"
           integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-          crossorigin="anonymous"></script>
+          crossorigin="anonymous"></script> -->
+          <script src="js/jquery.js"></script>
           <script src="js/angularjs-onsenui.js"></script>
           <script type="text/javascript" src="js/ng-map.js"></script>
           <script src="js/scripts.js"></script>  
@@ -76,8 +76,19 @@
         function deg2rad(deg) {
           return deg * (Math.PI/180)
         };
-        module.controller('MonitorCtl', function($http, $scope, position){
-
+        module.controller('rutaSQLCtl', function(data, $http, $scope, position){
+          $http({
+              method: 'GET',
+              url: 'json/transporte_gdl.json',
+              crossorigin: "anonymous"
+            }).then(function successCallback(response) {
+                $scope.ruta = {}
+                $scope.ruta = response.data.ruta;
+                console.log(response);
+              }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              });
         });
             // module.controller("RutasCtl", function($scope, $http){
             //   $http({
@@ -212,7 +223,7 @@
 </template>
 
 <template id="home.html">
-  <ons-page class="portada">
+  <ons-page class="portada" >
     <ons-row>
     <ons-col width="50%">
       <ons-card onclick="fn.pushPage({'id': 'rutas_sitran.html', 'title': 'PullHook'})">
@@ -239,6 +250,14 @@
     </ons-card>
   </ons-col>
 </ons-row>
+<ons-list ng-controller="rutaSQLCtl">
+    <ons-list-item ng-repeat="ruto in rutos">
+      <div class="left">
+      </div>
+      <div class="center"><span class="list-item__title">{{ruta.ruta}}</span>
+      <span class="list-item__subtitle">Frecuencia: {{ruta.frecuencia}}min.</span></div>
+    </ons-list-item>
+    </ons-list>
     <style>
       .intro {
         text-align: center;
@@ -584,9 +603,9 @@ var notify = function() {
         }).appendTo( "body" );
       });
 
-      $.getJSON( "http://altascapacidades.com.mx/apibus.php/records/rutas", function( data ) {
-        console.log(data);
-      });
+      // $.getJSON( "http://altascapacidades.com.mx/apibus.php/records/rutas", function( data ) {
+        // console.log(data);
+      // });
     </script>
   </ons-page>
 </template>

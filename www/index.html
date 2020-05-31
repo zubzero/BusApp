@@ -9,10 +9,11 @@
           <link rel="stylesheet" type="text/css" href="css/styles.css">
           <script src="js/angular17.min.js"></script>
           <script src="js/onsenui.js"></script>
-          <script
+          <!-- <script
           src="https://code.jquery.com/jquery-3.4.1.min.js"
           integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-          crossorigin="anonymous"></script>
+          crossorigin="anonymous"></script> -->
+          <script src="js/jquery.js"></script>
           <script src="js/angularjs-onsenui.js"></script>
           <script type="text/javascript" src="js/ng-map.js"></script>
           <script src="js/scripts.js"></script>  
@@ -75,19 +76,48 @@
         function deg2rad(deg) {
           return deg * (Math.PI/180)
         };
-        module.controller('MonitorCtl', function($http, $scope, position){
-
+        // module.controller('rutaSQLCtl', function(data, $http, $scope, position){
+        //   $http({
+        //       method: 'GET',
+        //       url: 'http://exposicionesvirtualesinteligentes.com.mx/apib.php/records/rutas'
+        //     }).then(function successCallback(response) {
+        //         $scope.ruta = {}
+        //         $scope.ruta = response.data;
+        //         console.log(response);
+        //       }, function errorCallback(response) {
+        //         // called asynchronously if an error occurs
+        //         // or server returns response with an error status.
+        //       });
+        // });
+        module.controller("RutasCtl", function($scope, $http){
+          $http({
+          method: 'GET',
+          url: 'http://exposicionesvirtualesinteligentes.com.mx/apib.php/records/rutas?order=ruta,asc'
+          }).then(function successCallback(response) {
+            $scope.rutas = response.data.records;
+            console.log(response.data.records);
+          }, function errorCallback(response) {
+          });
+          $scope.tomarelemento = function (elemento) {
+            idnew = elemento;
+            console.log(idnew+'rutasctl');
+          };
         });
-            // module.controller("RutasCtl", function($scope, $http){
-            //   $http({
-            //   method: 'GET',
-            //   url: 'http://altascapacidades.com.mx/apibus.php/records/rutas?order=nombre,asc'
-            //   }).then(function successCallback(response) {
-            //     $scope.rutas = response.data.records;
-            //     console.log(response.data.records);
-            //   }, function errorCallback(response) {
-            //   });
-            // });
+        module.controller("RutasDetalleCtl", function($scope, $http){
+          $scope.tomarelemento = function(elemento){
+            idnew = elemento;
+            console.log(idnew);
+          };
+          $http({
+          method: 'GET',
+          url: 'http://exposicionesvirtualesinteligentes.com.mx/apib.php/records/rutas/'+idnew
+          }).then(function successCallback(response) {
+            $scope.ruta = response.data;
+            console.log(response.data);
+          }, function errorCallback(response) {
+          });
+          
+        });
           </script>
     </head>
     <body>
@@ -211,7 +241,7 @@
 </template>
 
 <template id="home.html">
-  <ons-page class="portada">
+  <ons-page class="portada" >
     <ons-row>
     <ons-col width="50%">
       <ons-card onclick="fn.pushPage({'id': 'rutas_sitran.html', 'title': 'PullHook'})">
@@ -238,6 +268,7 @@
     </ons-card>
   </ons-col>
 </ons-row>
+
     <style>
       .intro {
         text-align: center;
@@ -550,7 +581,7 @@ var notify = function() {
   <ons-page ng-controller="AppController">
     <ons-toolbar>
       <div class="left">
-        <ons-back-button>Rutas SITRAN</ons-back-button>
+        <ons-back-button>< </ons-back-button>
       </div>
       <div class="center">Rutas SITRAN</div>
     </ons-toolbar>
@@ -558,7 +589,7 @@ var notify = function() {
       <ons-icon id="pull-hook-icon" size="22px" class="pull-hook-content" icon="fa-arrow-down"></ons-icon>
     </ons-pull-hook>
     <ons-list-header>Lista de rutas SITRAN ZMG</ons-list-header>
-    <ons-list-item ng-repeat="rutaS in rutasSitran">
+    <ons-list-item ng-repeat="rutaS in rutasSitran | orderBy:'nombre'" ng-click="tomarelemento(rutaS.nombre); menu.setMainPage('RutaDetalle.html', {closeMenu: true})">
       <div class="left">
         <img class="list-item__thumbnail" src="img/sitran.png">
       </div>
@@ -604,31 +635,12 @@ var notify = function() {
       Aquí encontrará todas las rutas que circulan en la ZMG.<br><br>
     </p>
     <input type="search" placeholder="Buscar ruta" class="search-input search-input--material" style="width: 100%" id="myInput">
-    <ul class="list" id="rutasGdl">
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">16 / 629-A</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">17 / 37</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">18 / 37-A</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">19 / 629-A</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">20 / 37</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">21 / 37-A</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">22 / 629-A</div>
-      </li></a>
-      <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
-        <div class="list-item__center">23 / 37</div>
-      </li></a>
+    <ul class="list" id="rutasGdl" ng-controller="RutasCtl">
+      
+    <a ng-repeat="ruta in rutas" onclick="fn.pushPage({'id': 'RutaDetalle.html'})">
+      <li class="list-item list-item--chevron list-item--tappable" ng-click="tomarelemento(ruta.id)">
+      <div class="list-item__center">{{ruta.ruta}}</div>
+    </li></a>
       <a onclick="fn.pushPage({'id': 'RutaDetalle.html'})"><li class="list-item list-item--chevron list-item--tappable">
         <div class="list-item__center">24 / 37-A</div>
       </li></a>
@@ -640,25 +652,6 @@ var notify = function() {
     </div> -->
 
     <script>
-      // ons.getScriptPage().onInit = function () {
-      //   var listNode = document.getElementById('list-node');
-      //   var createListItem = function (i) {
-      //     return ons.createElement(`<ons-list-item>Ruta T-${i}</ons-list-item>`);
-      //   }
-      //   for (var i = 0; i < 30; i++) {
-      //     listNode.appendChild(createListItem(i));
-      //   }
-      //   window.fn.loadMore = function (done) {
-      //     setTimeout(function() {
-      //       const listLength = listNode.children.length;
-      //       for (var i = 0; i < 10; i++) {
-      //         listNode.appendChild(createListItem(listLength + i));
-      //       }
-      //       done();
-      //     }, 600)
-      //   }
-      // };
-
       $(function() {
         $("#myInput").on("keyup", function() {
           var value = $(this).val().toLowerCase();
@@ -681,19 +674,17 @@ var notify = function() {
 
 
 <template id="RutaDetalle.html">
-  <ons-page class="CardDetalle">
+  <ons-page class="CardDetalle" ng-controller="RutasDetalleCtl" >
     <ons-toolbar>
       <div class="left">
         <ons-back-button></ons-back-button>
       </div>
       <div class="center">Detalles</div>
     </ons-toolbar>
-
+    <div ng-repeat="ruta in [ruta]">
     <div class="card">
-
-      <div class="card-name">Ruta 37-A / 26</div>
+      <div class="card-name">{{ruta.ruta}}</div>
       <div class="card-desc">Recorre 23.50 km.</div>
-
     </div>
 
     <div class="rating"><div class="rating-num">
@@ -731,7 +722,7 @@ var notify = function() {
       </ons-row>
       </ons-list-item></ons-list>
       <div class="container">
-        <p>&nbsp;&nbsp;El próximo se encuentra a <span id="time">05:00</span> minuto(s) de tí.</div></p>
+        <p>&nbsp;&nbsp;El próximo se encuentra a <span id="time">05:00</span> minuto(s) de tí.</p>
       </div>
     <ons-list style="margin-top: 12px;">
       <ons-list-item modifier="chevron">
@@ -763,6 +754,7 @@ Paseo De La Lluvia • Libra • Paseo Puesta Del Sol • Acuario • Sagitario 
         </div>
       </ons-list-item>
     </ons-list>
+  </div>
     <ons-alert-dialog id="my-alert-dialog" modifier="rowfooter">
     <div class="alert-dialog-title">Reportar unidad</div>
     <div class="alert-dialog-content">
@@ -849,32 +841,6 @@ var notify = function() {
   </ons-page>
 </template>
 
-<template id="transition.html">
-  <ons-page>
-    <ons-toolbar>
-      <div class="left">
-        <ons-back-button>Animations</ons-back-button>
-      </div>
-      <div class="center"></div>
-    </ons-toolbar>
-    <p style="text-align: center">
-      Use the VOnsBackButton
-    </p>
-    <script>
-      ons.getScriptPage().onInit = function () {
-        this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-      }
-    </script>
-  </ons-page>
-</template>
-
-<style>
-  ons-splitter-side[animation=overlay] {
-    border-left: 1px solid #bbb;
-  }
-</style>
-  </ons-page>
-</template>
     <script type="text/javascript" src="cordova.js"></script>
     </body>
 </html>

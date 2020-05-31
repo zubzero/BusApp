@@ -17,7 +17,19 @@
     },
     "cordova-plugin-browsersync": {
       "PACKAGE_NAME": "com.BussApp.mx"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.BussApp.mx"
+    },
+    "cordova-plugin-admobpro": {
+      "ADMOB_APP_ID": "ca-app-pub-0211823635398974~2597117296",
+      "PLAY_SERVICES_VERSION": "16.0.0",
+      "PACKAGE_NAME": "com.BussApp.mx"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-extension": {
+      "PACKAGE_NAME": "com.BussApp.mx"
+    }
+  }
 }
