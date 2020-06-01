@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.BussApp.mx" version="0.7.624" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.BussApp.mx" version="0.7.634" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>BussApp</name>
     <description>
         App Transporte publico Guadalajara
@@ -17,6 +17,8 @@
     <access origin="http://google.com" />
     <access origin="https://google.com" />
     <access origin="https://*.google.com" />
+    <access origin="https://apis.datos.jalisco.gob.mx/*" />
+    <access origin="http://exposicionesvirtualesinteligentes.com.mx/apib.php/*" />
     <access launch-external="yes" origin="tel:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
